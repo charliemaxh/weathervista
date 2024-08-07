@@ -17,7 +17,7 @@ def update_weather(city_var, plot_frame):
         plot_frame (ttk.Frame): A Tkinter frame where the plots will be displayed.
     """
     city = city_var.get()
-    api_key = 'bae42c96357151336d517d332313285c'  # Replace with your OpenWeatherMap API key
+    api_key = '686089244d2de25a02aad24881dc95f3'  # Replace with your OpenWeatherMap API key
     current_data, forecast_data = fetch_weather_data(api_key, city)
     current_df, hourly_df, daily_df = process_weather_data(current_data, forecast_data)
     daily_df['Weather'] = daily_df.apply(determine_weather, axis=1, args=(25, 15, 80))
@@ -55,11 +55,12 @@ def create_dashboard(root):
 
     # Dropdown for city selection
     city_var = tk.StringVar(value='Sydney')
-    city_dropdown = ttk.Combobox(control_frame, textvariable=city_var, values=['Sydney', 'New York', 'London', 'Beijing'])
+    city_entry = ttk.Entry(0,'Perth')
+    #city_dropdown = ttk.Combobox(control_frame, textvariable=city_var, values=['Sydney', 'New York', 'London', 'Beijing', 'Perth'])
     city_dropdown.grid(row=0, column=0, padx=5, pady=5)
 
     # Button to fetch and update weather data
-    update_button = ttk.Button(control_frame, text="Update Weather", command=lambda: update_weather(city_var, plot_frame))
+    update_button = ttk.Button(control_frame, text="Update Weather", command=lambda: update_weather(city_entry, plot_frame))
     update_button.grid(row=0, column=1, padx=5, pady=5)
 
     # Configure row and column weights
