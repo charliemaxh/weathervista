@@ -8,15 +8,15 @@ from process_data import process_weather_data
 from utils import determine_weather
 
 
-def update_weather(city_var, plot_frame):
+def update_weather(city_entry, plot_frame):
     """
     Fetch and update the weather data for the selected city, then update the plots in the dashboard.
 
     Args:
-        city_var (tk.StringVar): A Tkinter StringVar containing the selected city name.
+        city_entry (tk.StringVar): A Tkinter StringVar containing the selected city name.
         plot_frame (ttk.Frame): A Tkinter frame where the plots will be displayed.
     """
-    city = city_var.get()
+    city = city_entry.get()
     api_key = '686089244d2de25a02aad24881dc95f3'  # Replace with your OpenWeatherMap API key
     current_data, forecast_data = fetch_weather_data(api_key, city)
     current_df, hourly_df, daily_df = process_weather_data(current_data, forecast_data)
@@ -54,7 +54,7 @@ def create_dashboard(root):
     plot_frame.grid(row=1, column=0, sticky=(tk.W, tk.E, tk.N, tk.S))
 
     # Dropdown for city selection
-    city_var = tk.StringVar(value='Sydney')
+    #city_var = tk.StringVar(value='Sydney')
     city_entry = tk.Entry(control_frame)
     #city_dropdown = ttk.Combobox(control_frame, textvariable=city_var, values=['Sydney', 'New York', 'London', 'Beijing', 'Perth'])
     city_entry.grid(row=0, column=0, padx=5, pady=5)
@@ -70,4 +70,4 @@ def create_dashboard(root):
     plot_frame.grid_columnconfigure(0, weight=1)
 
     # Initialize the weather data
-    update_weather(city_var, plot_frame)
+    update_weather(city_entry, plot_frame)
