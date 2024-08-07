@@ -55,9 +55,9 @@ def create_dashboard(root):
 
     # Dropdown for city selection
     city_var = tk.StringVar(value='Sydney')
-    city_entry = ttk.Entry(0,'Perth')
+    city_entry = tk.Entry(control_frame)
     #city_dropdown = ttk.Combobox(control_frame, textvariable=city_var, values=['Sydney', 'New York', 'London', 'Beijing', 'Perth'])
-    city_dropdown.grid(row=0, column=0, padx=5, pady=5)
+    city_entry.grid(row=0, column=0, padx=5, pady=5)
 
     # Button to fetch and update weather data
     update_button = ttk.Button(control_frame, text="Update Weather", command=lambda: update_weather(city_entry, plot_frame))
