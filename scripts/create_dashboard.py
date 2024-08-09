@@ -56,6 +56,7 @@ def create_dashboard(root):
     # Dropdown for city selection
     #city_var = tk.StringVar(value='Sydney')
     city_entry = tk.Entry(control_frame)
+    city_entry.insert(0, 'Perth')
     #city_dropdown = ttk.Combobox(control_frame, textvariable=city_var, values=['Sydney', 'New York', 'London', 'Beijing', 'Perth'])
     city_entry.grid(row=0, column=0, padx=5, pady=5)
 
