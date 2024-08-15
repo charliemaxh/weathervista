@@ -1,8 +1,12 @@
 import requests
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
 
 class WeatherAPI:
     def __init__(self):
-        self.api_key = '686089244d2de25a02aad24881dc95f3'
+        self.api_key = os.getenv("OPENWEATHER_API_KEY")
         self.base_url = "http://api.openweathermap.org/data/2.5"
 
     def fetch_data(self,url):
