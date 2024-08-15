@@ -18,8 +18,8 @@ class WeatherAPI:
         """
         try:
             response = requests.get(url)
-            response.raise_for_status()
-            data = response.json()
+            response.raise_for_status() # http error (no connection) etc
+            data = response.json() #attempt to parse JSON
             return data
         except requests.exceptions.RequestException as e:
             print(f"Request Failed: {e}")
