@@ -8,7 +8,7 @@ root = tk.Tk()
 root.title("Weather Dashboard")
 
 # Create the dashboard
-create_dashboard(root, WeatherAPI)
+create_dashboard(root)
 
 # Start the Tkinter event loop
 root.mainloop()

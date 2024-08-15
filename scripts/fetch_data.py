@@ -1,7 +1,7 @@
 import requests
 
 class WeatherAPI:
-    def __init__(self, api_key):
+    def __init__(self):
         self.api_key = '686089244d2de25a02aad24881dc95f3'
         self.base_url = "http://api.openweathermap.org/data/2.5"
 
@@ -40,10 +40,11 @@ class WeatherAPI:
                 - dict or None: The current weather data.
                 - dict or None: The weather forecast data.
         """
-        current_url = f'http://api.openweathermap.org/data/2.5/weather?q={location}&appid={api_key}'
+        
+        current_url = f'http://api.openweathermap.org/data/2.5/weather?q={location}&appid={self.api_key}'
         current_data = self.fetch_data(current_url)
 
-        forecast_url = f'http://api.openweathermap.org/data/2.5/forecast?q={location}&appid={api_key}'
+        forecast_url = f'http://api.openweathermap.org/data/2.5/forecast?q={location}&appid={self.api_key}'
         forecast_data = self.fetch_data(forecast_url)
 
         return current_data, forecast_data

@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 from tkinter import ttk
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from visualise_data import create_forecast_card, plot_scatter, plot_min_max
-from fetch_data import fetch_weather_data
+from fetch_data import WeatherAPI
 from process_data import process_weather_data
 from utils import determine_weather
 
@@ -16,9 +16,10 @@ def update_weather(city_entry, plot_frame):
         city_entry (tk.StringVar): A Tkinter StringVar containing the selected city name.
         plot_frame (ttk.Frame): A Tkinter frame where the plots will be displayed.
     """
+    weather_api = WeatherAPI()
     city = city_entry.get()
     api_key = '686089244d2de25a02aad24881dc95f3'  # Replace with your OpenWeatherMap API key
-    current_data, forecast_data = fetch_weather_data(api_key, city)
+    current_data, forecast_data = weather_api.fetch_weather_data(city)
     current_df, hourly_df, daily_df = process_weather_data(current_data, forecast_data)
     daily_df['Weather'] = daily_df.apply(determine_weather, axis=1, args=(25, 15, 80))
 
